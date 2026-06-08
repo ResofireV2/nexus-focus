@@ -1,0 +1,303 @@
+/* ============================================================
+   Nexus — Focus Theme  v1.0.0
+   Author: ResofireV2
+   ============================================================
+   Philosophy:
+   - Sidebar hidden entirely — zero structural chrome on the left
+   - Navigation moves to the topbar as text labels
+   - Feed column centred at a comfortable reading width
+   - Serif body font (Lora) — typography does the work
+   - No color overrides — admin palette applies untouched
+   - Works in both dark and light mode
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+/* ── Global font ─────────────────────────────────────────── */
+html, body,
+.feed-title, .thread-title, .thread-preview,
+.thread-tag, .part-label, .last-ago,
+.post-title, .post-body, .reply-text,
+.auth-title, .profile-name, .profile-bio {
+  font-family: 'Lora', Georgia, serif !important;
+}
+
+/* ── Hide sidebar entirely ───────────────────────────────── */
+:root {
+  --sidebar-width: 0px;
+}
+.sidebar {
+  display: none !important;
+}
+
+/* ── Topbar — full width, centred content ────────────────── */
+.topbar {
+  padding: 0 32px !important;
+  height: 60px !important;
+}
+
+/* Logo: slightly larger, italic character */
+.logo-text {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  letter-spacing: -.3px !important;
+}
+.logo-text em {
+  font-style: normal !important;
+}
+
+/* Search bar: pill style, centred in topbar */
+.tb-search {
+  max-width: 280px !important;
+}
+
+/* Write button: inherit Lora */
+.write-btn {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 13px !important;
+  padding: 8px 20px !important;
+}
+
+/* ── Feed — centred reading column ───────────────────────── */
+.feed-header {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  padding: 0 32px !important;
+  height: 56px !important;
+}
+
+.feed-title {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  color: var(--t2) !important;
+  letter-spacing: -.3px !important;
+}
+
+.sort-pills {
+  gap: 2px !important;
+}
+.sort-pill {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 12px !important;
+  font-style: italic !important;
+  padding: 4px 12px !important;
+}
+
+.feed-list {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+/* Non-thread children (banners, empty state) also centred */
+.feed-list > div:not(.thread) {
+  width: 100% !important;
+  max-width: 760px !important;
+  padding: 0 32px !important;
+}
+
+/* ── Thread rows — editorial style ──────────────────────── */
+.thread {
+  width: 100% !important;
+  max-width: 760px !important;
+  border-bottom: 0.5px solid var(--b1) !important;
+  padding: 0 32px !important;
+  transition: none !important;
+}
+.thread:hover {
+  background: transparent !important;
+}
+.thread:hover .thread-title {
+  color: var(--ac-text) !important;
+}
+
+/* Hide the left accent stripe — no colour chrome */
+.thread-accent {
+  display: none !important;
+}
+
+/* Hide the OP avatar column */
+.thread-av-wrap {
+  display: none !important;
+}
+
+/* thread-main: just the body now */
+.thread-main {
+  display: block !important;
+}
+
+/* Thread body: full width with vertical padding */
+.thread-body {
+  padding: 24px 0 20px !important;
+  align-self: auto !important;
+  min-width: 0 !important;
+}
+
+/* Space tag above title — show the tags-row, hide tags-col */
+.thread-tags-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  margin-bottom: 8px !important;
+}
+.thread-tags-col {
+  display: none !important;
+}
+.thread-top-tags {
+  display: none !important;
+}
+
+.thread-tag {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .8px !important;
+  text-transform: uppercase !important;
+  padding: 2px 8px !important;
+}
+
+/* .thread-top holds the title + pinned badge */
+.thread-top {
+  margin-bottom: 6px !important;
+}
+
+/* Title: large, wrapping, serif */
+.thread-title {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -.3px !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  flex: unset !important;
+  transition: color .1s !important;
+}
+[data-theme="dark"] .thread-title {
+  color: var(--t1) !important;
+}
+
+/* Preview: 3-line clamp, comfortable reading size */
+.thread-preview {
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+  color: var(--t3) !important;
+  white-space: normal !important;
+  overflow: hidden !important;
+  text-overflow: unset !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  margin-bottom: 12px !important;
+}
+
+/* Participants row: author + time + replies footer */
+.participants-row {
+  padding: 0 !important;
+  gap: 0 !important;
+}
+.av-stack {
+  display: flex !important;
+}
+.pav {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 8px !important;
+  border-radius: 5px !important;
+}
+.part-label {
+  font-size: 12px !important;
+  font-style: italic !important;
+  color: var(--t4) !important;
+  margin-left: 10px !important;
+}
+
+/* Hide thread-meta (reaction count + last activity column) */
+.thread-meta {
+  display: none !important;
+}
+
+/* Bookmark button: top-right corner of the thread area */
+.thread-save-btn {
+  top: 26px !important;
+  left: auto !important;
+  right: 32px !important;
+}
+
+/* ── Post page ───────────────────────────────────────────── */
+.post-content-wrap {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  padding: 32px 32px !important;
+}
+
+.post-title {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  letter-spacing: -.5px !important;
+  line-height: 1.25 !important;
+}
+
+.post-body {
+  font-size: 16px !important;
+  line-height: 1.85 !important;
+}
+
+.reply-text {
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+}
+
+/* Reply box */
+.reply-box-ta {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+}
+
+/* Composer */
+.comp-title-input {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  letter-spacing: -.3px !important;
+}
+.comp-ta {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+}
+
+/* ── Right panel ─────────────────────────────────────────── */
+.rw-label {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 9px !important;
+  font-style: italic !important;
+  letter-spacing: 1px !important;
+}
+.stat-n {
+  font-family: 'Lora', Georgia, serif !important;
+  font-weight: 700 !important;
+}
+.p-name {
+  font-family: 'Lora', Georgia, serif !important;
+  font-style: italic !important;
+  font-size: 11px !important;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 13px !important;
+}
+.btn-ghost {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 12px !important;
+}

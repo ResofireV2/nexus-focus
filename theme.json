@@ -1,0 +1,10 @@
+{
+  "manifest_version": 1,
+  "name": "Focus",
+  "slug": "nexus-focus",
+  "version": "1.0.0",
+  "author": "ResofireV2",
+  "description": "No sidebar. Centred reading column. Serif font. Admin colors apply untouched.",
+  "homepage": "https://github.com/ResofireV2/nexus-theme-focus",
+  "categories": ["minimal", "reading", "light", "dark"]
+}
