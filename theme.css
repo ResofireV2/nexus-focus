@@ -22,12 +22,71 @@ html, body,
   font-family: 'Lora', Georgia, serif !important;
 }
 
-/* ── Hide sidebar entirely ───────────────────────────────── */
+/* ── Sidebar — icon-only narrow rail ─────────────────────── */
 :root {
-  --sidebar-width: 0px;
+  --sidebar-width: 52px;
 }
-.sidebar {
+
+/* Logo area: centre and clip — shows first letters of site name */
+.sb-logo {
+  padding: 0 !important;
+  justify-content: center !important;
+  height: 60px !important;
+  overflow: hidden !important;
+}
+.logo-text {
+  font-family: 'Lora', Georgia, serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  letter-spacing: -.3px !important;
+  white-space: nowrap !important;
+  /* Clip to show only ~2 chars at 52px width */
+  max-width: 36px !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+.logo-text em {
+  font-style: normal !important;
+}
+
+/* Nav items: centre icon, hide everything else */
+.sb-item {
+  padding: 8px 0 !important;
+  justify-content: center !important;
+}
+.sb-item-name,
+.sb-item-count,
+.sb-badge,
+.sb-label,
+.sb-item-toggle {
   display: none !important;
+}
+.sb-item i {
+  width: auto !important;
+  font-size: 16px !important;
+}
+
+/* Sub-items: hide entirely */
+.sb-sub-item {
+  display: none !important;
+}
+
+/* User area: centre avatar, hide text */
+.sb-user {
+  padding: 8px 0 !important;
+  justify-content: center !important;
+}
+.sb-user-name,
+.sb-user-role,
+.sb-user-icon {
+  display: none !important;
+}
+
+/* Item inner (expandable items): centre icon */
+.sb-item-inner {
+  padding: 8px 0 !important;
+  justify-content: center !important;
 }
 
 /* ── Topbar — full width, centred content ────────────────── */
@@ -36,17 +95,7 @@ html, body,
   height: 60px !important;
 }
 
-/* Logo: slightly larger, italic character */
-.logo-text {
-  font-family: 'Lora', Georgia, serif !important;
-  font-size: 18px !important;
-  font-weight: 700 !important;
-  font-style: italic !important;
-  letter-spacing: -.3px !important;
-}
-.logo-text em {
-  font-style: normal !important;
-}
+
 
 /* Search bar: pill style, centred in topbar */
 .tb-search {
