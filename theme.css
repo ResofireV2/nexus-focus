@@ -25,6 +25,12 @@ html, body,
 /* ── Sidebar — icon-only narrow rail ─────────────────────── */
 :root {
   --sidebar-width: 52px;
+  --right-panel-width: 0px;
+}
+
+/* Hide right panel — full width for reading */
+.right-panel {
+  display: none !important;
 }
 
 /* Logo area: centre and clip — shows first letters of site name */
@@ -36,7 +42,7 @@ html, body,
 }
 .logo-text {
   font-family: 'Lora', Georgia, serif !important;
-  font-size: 14px !important;
+  font-size: 15px !important;
   font-weight: 700 !important;
   font-style: italic !important;
   letter-spacing: -.3px !important;
@@ -111,7 +117,7 @@ html, body,
 
 /* ── Feed — centred reading column ───────────────────────── */
 .feed-header {
-  max-width: 760px !important;
+  max-width: 860px !important;
   margin: 0 auto !important;
   width: 100% !important;
   padding: 0 32px !important;
@@ -146,14 +152,14 @@ html, body,
 /* Non-thread children (banners, empty state) also centred */
 .feed-list > div:not(.thread) {
   width: 100% !important;
-  max-width: 760px !important;
+  max-width: 860px !important;
   padding: 0 32px !important;
 }
 
 /* ── Thread rows — editorial style ──────────────────────── */
 .thread {
   width: 100% !important;
-  max-width: 760px !important;
+  max-width: 860px !important;
   border-bottom: 0.5px solid var(--b1) !important;
   padding: 0 32px !important;
   transition: none !important;
@@ -182,7 +188,7 @@ html, body,
 
 /* Thread body: full width with vertical padding */
 .thread-body {
-  padding: 24px 0 20px !important;
+  padding: 28px 0 24px !important;
   align-self: auto !important;
   min-width: 0 !important;
 }
@@ -217,7 +223,7 @@ html, body,
 
 /* Title: large, wrapping, serif */
 .thread-title {
-  font-size: 19px !important;
+  font-size: 21px !important;
   font-weight: 700 !important;
   line-height: 1.3 !important;
   letter-spacing: -.3px !important;
@@ -282,7 +288,7 @@ html, body,
 
 /* ── Post page ───────────────────────────────────────────── */
 .post-content-wrap {
-  max-width: 760px !important;
+  max-width: 860px !important;
   margin: 0 auto !important;
   padding: 32px 32px !important;
 }
