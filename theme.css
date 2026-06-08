@@ -25,32 +25,30 @@ html, body,
 /* ── Sidebar — icon-only narrow rail ─────────────────────── */
 :root {
   --sidebar-width: 52px;
-  --right-panel-width: 0px;
 }
 
-/* Hide right panel — full width for reading */
-.right-panel {
-  display: none !important;
-}
-
-/* Logo area: centre and clip — shows first letters of site name */
+/* Logo area: show site name rotated as a vertical spine */
 .sb-logo {
   padding: 0 !important;
   justify-content: center !important;
-  height: 60px !important;
+  align-items: center !important;
+  height: 64px !important;
   overflow: hidden !important;
 }
 .logo-text {
   font-family: 'Lora', Georgia, serif !important;
-  font-size: 15px !important;
+  font-size: 13px !important;
   font-weight: 700 !important;
   font-style: italic !important;
-  letter-spacing: -.3px !important;
+  letter-spacing: .5px !important;
   white-space: nowrap !important;
-  /* Clip to show only ~2 chars at 52px width */
-  max-width: 36px !important;
-  overflow: hidden !important;
   display: block !important;
+  writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+  transform: rotate(180deg) !important;
+  max-width: none !important;
+  overflow: visible !important;
+  line-height: 1 !important;
 }
 .logo-text em {
   font-style: normal !important;
@@ -117,9 +115,6 @@ html, body,
 
 /* ── Feed — centred reading column ───────────────────────── */
 .feed-header {
-  max-width: 860px !important;
-  margin: 0 auto !important;
-  width: 100% !important;
   padding: 0 32px !important;
   height: 56px !important;
 }
@@ -143,23 +138,18 @@ html, body,
 }
 
 .feed-list {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
   padding: 0 !important;
 }
 
-/* Non-thread children (banners, empty state) also centred */
+/* Non-thread children (banners, empty state) */
 .feed-list > div:not(.thread) {
   width: 100% !important;
-  max-width: 860px !important;
   padding: 0 32px !important;
 }
 
 /* ── Thread rows — editorial style ──────────────────────── */
 .thread {
   width: 100% !important;
-  max-width: 860px !important;
   border-bottom: 0.5px solid var(--b1) !important;
   padding: 0 32px !important;
   transition: none !important;
@@ -288,9 +278,7 @@ html, body,
 
 /* ── Post page ───────────────────────────────────────────── */
 .post-content-wrap {
-  max-width: 860px !important;
-  margin: 0 auto !important;
-  padding: 32px 32px !important;
+  padding: 32px 40px !important;
 }
 
 .post-title {
