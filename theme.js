@@ -13,6 +13,8 @@
 (function focusThemeJS() {
   'use strict';
 
+  console.log('[Focus] theme.js executing');
+
   var OPEN_ATTR    = 'data-focus-sidebar';
   var LOGO_ID      = 'focus-tb-logo';
   var BURGER_ID    = 'focus-tb-burger';
@@ -27,6 +29,7 @@
   // ── Helpers ─────────────────────────────────────────────────────────────────
 
   function getSiteName() {
+    console.log('[Focus] getSiteName: _appBrandingForTheme=', window._appBrandingForTheme);
     // 1. Live branding object set by applyBranding
     if (window._appBrandingForTheme && window._appBrandingForTheme.site_name) {
       return { type: 'text', value: window._appBrandingForTheme.site_name };
@@ -69,6 +72,7 @@
 
   function injectTopbarElements() {
     var topbar = document.querySelector('.topbar');
+    console.log('[Focus] injectTopbarElements: topbar=', !!topbar, 'burgerExists=', !!document.getElementById(BURGER_ID));
     if (!topbar) return false;
 
     // Don't inject twice
@@ -128,17 +132,21 @@
   // ── Initialise ──────────────────────────────────────────────────────────────
 
   function init() {
+    console.log('[Focus] init() called, readyState:', document.readyState);
     injectOverlay();
 
     // If topbar is already in the DOM, inject immediately
     if (injectTopbarElements()) {
+      console.log('[Focus] topbar found immediately, elements injected');
       document.addEventListener('click', onNavClick);
       return;
     }
 
+    console.log('[Focus] topbar not found yet, starting MutationObserver');
     // Otherwise wait for React to render the topbar
     var observer = new MutationObserver(function() {
       if (injectTopbarElements()) {
+        console.log('[Focus] topbar found via observer, elements injected');
         observer.disconnect();
         document.addEventListener('click', onNavClick);
       }
