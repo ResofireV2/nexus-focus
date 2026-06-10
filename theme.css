@@ -1,11 +1,11 @@
 /* ============================================================
-   Nexus — Focus Theme  v1.0.0
+   Nexus — Focus Theme  v1.1.0
    Author: ResofireV2
    ============================================================
    Philosophy:
-   - Sidebar hidden entirely — zero structural chrome on the left
-   - Navigation moves to the topbar as text labels
-   - Feed column centred at a comfortable reading width
+   - Sidebar hidden by default — slides in as an overlay via hamburger
+   - Site name / logo injected into the topbar by theme.js
+   - Feed uses the full content width — no max-width constraint
    - Serif body font (Lora) — typography does the work
    - No color overrides — admin palette applies untouched
    - Works in both dark and light mode
@@ -22,86 +22,81 @@ html, body,
   font-family: 'Lora', Georgia, serif !important;
 }
 
-/* ── Sidebar — icon-only narrow rail ─────────────────────── */
+/* ── Sidebar — hidden by default, overlay on hamburger open ─ */
 :root {
-  --sidebar-width: 52px;
+  --sidebar-width: 0px;
 }
 
-/* Logo area: show site name rotated as a vertical spine */
-.sb-logo {
-  padding: 0 !important;
-  justify-content: center !important;
-  align-items: center !important;
-  height: 64px !important;
-  overflow: hidden !important;
+/* Sidebar: collapsed by default, slides in as a fixed overlay */
+.sidebar {
+  display: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100vh !important;
+  width: 300px !important;
+  z-index: 200 !important;
+  box-shadow: 4px 0 32px rgba(0,0,0,0.25) !important;
 }
-.logo-text {
+html[data-focus-sidebar="open"] .sidebar {
+  display: flex !important;
+}
+
+/* Backdrop overlay — covers the page behind the open sidebar */
+.focus-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(1px);
+}
+html[data-focus-sidebar="open"] .focus-sidebar-overlay {
+  display: block;
+}
+
+/* ── Topbar — hamburger + site name injected by theme.js ──── */
+.focus-tb-burger {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 12px 0 0 !important;
+  color: var(--t3) !important;
+  font-size: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  transition: color .15s !important;
+}
+.focus-tb-burger:hover {
+  color: var(--t1) !important;
+}
+
+.focus-tb-logo {
   font-family: 'Lora', Georgia, serif !important;
-  font-size: 13px !important;
+  font-size: 17px !important;
   font-weight: 700 !important;
   font-style: italic !important;
-  letter-spacing: .5px !important;
+  letter-spacing: -.3px !important;
+  color: var(--t1) !important;
   white-space: nowrap !important;
-  display: block !important;
-  writing-mode: vertical-rl !important;
-  text-orientation: mixed !important;
-  transform: rotate(180deg) !important;
-  max-width: none !important;
-  overflow: visible !important;
-  line-height: 1 !important;
+  margin-right: 20px !important;
+  flex-shrink: 0 !important;
 }
-.logo-text em {
-  font-style: normal !important;
-}
-
-/* Nav items: centre icon, hide everything else */
-.sb-item {
-  padding: 8px 0 !important;
-  justify-content: center !important;
-}
-.sb-item-name,
-.sb-item-count,
-.sb-badge,
-.sb-label,
-.sb-item-toggle {
-  display: none !important;
-}
-.sb-item i {
+.focus-tb-logo img {
+  height: 28px !important;
   width: auto !important;
-  font-size: 16px !important;
+  object-fit: contain !important;
+  display: block !important;
 }
 
-/* Sub-items: hide entirely */
-.sb-sub-item {
-  display: none !important;
-}
-
-/* User area: centre avatar, hide text */
-.sb-user {
-  padding: 8px 0 !important;
-  justify-content: center !important;
-}
-.sb-user-name,
-.sb-user-role,
-.sb-user-icon {
-  display: none !important;
-}
-
-/* Item inner (expandable items): centre icon */
-.sb-item-inner {
-  padding: 8px 0 !important;
-  justify-content: center !important;
-}
-
-/* ── Topbar — full width, centred content ────────────────── */
+/* ── Topbar — full width ─────────────────────────────────── */
 .topbar {
   padding: 0 32px !important;
   height: 60px !important;
 }
 
-
-
-/* Search bar: pill style, centred in topbar */
+/* Search bar: pill style, constrained */
 .tb-search {
   max-width: 280px !important;
 }
