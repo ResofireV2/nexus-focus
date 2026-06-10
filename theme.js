@@ -17,7 +17,7 @@
   var LOGO_ID      = 'focus-tb-logo';
   var BURGER_ID    = 'focus-tb-burger';
   var OVERLAY_ID   = 'focus-sidebar-overlay';
-  var CLEANUP_KEY  = '__focusThemeCleanup';
+  var CLEANUP_KEY  = '__nexusThemeCleanup';
 
   // ── Run any previous cleanup before re-initialising ────────────────────────
   if (typeof window[CLEANUP_KEY] === 'function') {
