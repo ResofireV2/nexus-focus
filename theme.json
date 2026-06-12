@@ -11,5 +11,7 @@
     "reading",
     "light",
     "dark"
-  ]
+  ],
+  "logo_url": "https://raw.githubusercontent.com/ResofireV2/nexus-theme-focus/main/priv/static/logo.webp",
+  "banner_url": "https://raw.githubusercontent.com/ResofireV2/nexus-theme-focus/main/priv/static/banner.webp"
 }
